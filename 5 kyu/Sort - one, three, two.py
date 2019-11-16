@@ -57,11 +57,8 @@ number_system = {
 
 def n2w(num: int) -> str:
     """ Convert int number to its word representation """
-    x = str()
 
-    # return zero if number is 0
-    # if num == 0:
-    #     return number_system[num]
+    x = str()
 
     # if number greater than 100 add it's hundred's part words
     if num >= 100:
@@ -85,10 +82,6 @@ def n2w(num: int) -> str:
     if num in range(0, 20):
         x += number_system[num]
         return x
-
-    # # finally convert the one's
-    # if num:
-    #     x += number_system[num]
 
     return x
 
