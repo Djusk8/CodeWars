@@ -22,19 +22,81 @@ Input
 # ---------------  SOLUTION ---------------
 import codewars_test as Test
 
-# While the main purpose of any code-education platform is to write code, I think the right approach to solve any catas
-# is to write as much code as possible, avoiding the use of third-party libraries.
-# So it will be more useful to code your own functions instead of num2words and word2number.
-# I plan to update solution with my own libraries later
+number_system = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    10: 'ten',
+    11: 'eleven',
+    12: 'twelve',
+    13: 'thirteen',
+    14: 'fourteen',
+    15: 'fifteen',
+    16: 'sixteen',
+    17: 'seventeen',
+    18: 'eighteen',
+    19: 'nineteen',
+    20: 'twenty',
+    30: 'thirty',
+    40: 'forty',
+    50: 'fifty',
+    60: 'sixty',
+    70: 'seventy',
+    80: 'eighty',
+    90: 'ninety',
+    100: 'hundred',
+}
 
-from num2words import num2words
-from word2number import w2n
+
+def n2w(num: int) -> str:
+    """ Convert int number to its word representation """
+    x = str()
+
+    # return zero if number is 0
+    if num == 0:
+        return number_system[num]
+
+    # if number greater than 100 add it's hundred's part words
+    if num >= 100:
+        x += number_system[num // 100] + " hundred"
+
+        # if there are tenth and\or one's in the numbers add word 'and'
+        if num % 100:
+            x += ' and '
+
+        # remove hundred's part from number
+        num = num % 100
+
+    # for numbers from 10 to 19 use special words and return the result
+    if num in range(11, 20):
+        x += number_system[num]
+        return x
+
+    # convert tenths from 20 to 90
+    if num in range(20, 100):
+        x += number_system[num // 10 * 10]
+        if num % 10:
+            x += '-'
+        num = num % 10
+
+    # finally convert the one's
+    if num:
+        x += number_system[num]
+
+    return x
 
 
 def sort_by_name(nums):
 
-    nums_str = sorted([num2words(n) for n in nums])     # Convert list of numbers to words list and sort it by name
-    return [w2n.word_to_num(n) for n in nums_str]       # Convert sorted list of words to numbers
+    nums_str = sorted([(n2w(n), n) for n in nums])  # Convert list of numbers to list of (word, num) and sort it by name
+    return [n[1] for n in nums_str]  # Extract list of numbers from sorted list of words
 
 
 # ---------------  TEST CASES ---------------
