@@ -60,8 +60,8 @@ def n2w(num: int) -> str:
     x = str()
 
     # return zero if number is 0
-    if num == 0:
-        return number_system[num]
+    # if num == 0:
+    #     return number_system[num]
 
     # if number greater than 100 add it's hundred's part words
     if num >= 100:
@@ -74,11 +74,6 @@ def n2w(num: int) -> str:
         # remove hundred's part from number
         num = num % 100
 
-    # for numbers from 10 to 19 use special words and return the result
-    if num in range(11, 20):
-        x += number_system[num]
-        return x
-
     # convert tenths from 20 to 90
     if num in range(20, 100):
         x += number_system[num // 10 * 10]
@@ -86,9 +81,14 @@ def n2w(num: int) -> str:
             x += '-'
         num = num % 10
 
-    # finally convert the one's
-    if num:
+    # for numbers from 10 to 19 use special words and return the result
+    if num in range(0, 20):
         x += number_system[num]
+        return x
+
+    # # finally convert the one's
+    # if num:
+    #     x += number_system[num]
 
     return x
 
