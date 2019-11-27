@@ -66,17 +66,18 @@ Input/Output
 import codewars_test as Test
 
 
+# Yes, it's not usual approach to solve this problem - mot times you will use day and height variables to store the data
+# about the plant. I tried to find the way to make little optimization and remove the height variable.
 def growing_plant(upSpeed, downSpeed, desiredHeight):
     day = 1
-    h = 0
 
     while True:
-        h += upSpeed
-        if h >= desiredHeight:
+        desiredHeight -= upSpeed
+        if desiredHeight <= 0:
             return day
         else:
             day += 1
-            h -= downSpeed
+            desiredHeight += downSpeed
 
 
 # ---------------  TEST CASES ---------------
