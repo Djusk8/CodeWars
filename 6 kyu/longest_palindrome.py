@@ -1,7 +1,6 @@
 # ------------  KATA DESCRIPTION ------------
 """
-6 kyu
-Longest Palindrome
+6 kyu - Longest Palindrome
 
 Find the length of the longest substring in the given string s that is the same in reverse.
 
