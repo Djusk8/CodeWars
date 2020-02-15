@@ -1,2 +1,3 @@
 # CodeWars
-My solution for CodeWars.com cata's
+My solutions for CodeWars.com catas
+
